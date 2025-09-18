@@ -2,10 +2,20 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net472;net6.0;net8.0;net9.0</TargetFrameworks>
     <PackageId>GLabs.Logging</PackageId>
-    <Version>1.0.0</Version>
-    <Authors>G-Labs</Authors>
+    <Version>1.0.1</Version>
+    <Authors>Generoso Martello</Authors>
+    <Company>G-Labs</Company>
     <Description>A logging wrapper for MIG libraries based on Microsoft.Extensions.Logging.</Description>
-    <RootNamespace>MIG.Logging</RootNamespace>
+    <RootNamespace>GLabs.Logging</RootNamespace>
+    <Description>Serial Port libray for .Net
+      Features
+      - Easy to use
+      - Event driven
+      - Hot plug
+      - Automatically restabilish connection on error/disconnect</Description>
+    <PackageLicense>./LICENSE</PackageLicense>
+    <PackageProjectUrl>https://github.com/genielabs/glabs-logging/</PackageProjectUrl>
+    <PackageTags>logging</PackageTags>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
@@ -14,7 +24,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9"/>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.9"/>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.9"/>
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.9"/>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
@@ -23,7 +32,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1"/>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1"/>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1"/>
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0"/>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
@@ -32,7 +40,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.1"/>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.1"/>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.1"/>
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.1"/>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net472' ">
@@ -43,16 +50,6 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0"/>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0"/>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0"/>
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1"/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0"/>
-    <PackageReference Include="WebsocketSharp.Standard2" Version="2022.4.16.1520"/>
-    <PackageReference Include="MessagePack" Version="3.1.4"/>
-    <PackageReference Include="MessagePack.Annotations" Version="3.1.4"/>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4"/>
-    <PackageReference Include="Ude.NetStandard" Version="1.2.0"/>
   </ItemGroup>
   
 </Project>

@@ -1,0 +1,22 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+[Bb]in/
+[Oo]bj/
+
+# Temporary and local IDE/System files
+*.userprefs
+*.suo
+*.pidb
+Thumbs.db
+**/.idea/*
+**/*.DotSettings.user
+
+# Nuget packages
+**/packages/*
+!**/packages/repositories.config
+
+riderModule.iml
+/_ReSharper.Caches/

@@ -1,6 +1,6 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/6genehqw9wtuuxkl?svg=true)](https://ci.appveyor.com/project/genemars/glabs-logging)
+[![Build status](https://ci.appveyor.com/api/projects/status/github/genielabs/glabs-logging?branch=main&svg=true)](https://ci.appveyor.com/project/genemars/glabs-logging)
 [![NuGet](https://img.shields.io/nuget/v/GLabs.Logging.svg)](https://www.nuget.org/packages/GLabs.Logging/)
-![License](https://img.shields.io/github/license/genielabs/glabs-logging.svg)
+![License](https://img.shields.io/github/license/genielabs/glabs-logging)
 
 # GLabs.Logging
 
@@ -30,7 +30,8 @@ GLabs.Logging solves these problems by providing a lightweight bridge that unifi
 Install the package from NuGet:
 
 ```bash
-dotnet add package GLabs.Logging```
+dotnet add package GLabs.Logging
+```
 
 ## How to Use
 
@@ -99,7 +100,8 @@ This is the recommended approach for any real application (Web API, Worker Servi
       }
     }
   }
-}```
+}
+```
 
 **Step 2: Initialize `LogManager` at startup**
 In your `Program.cs`, build your host and use the configured `ILoggerFactory` to initialize the `LogManager`.

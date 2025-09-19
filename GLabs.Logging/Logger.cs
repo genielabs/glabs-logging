@@ -27,7 +27,8 @@ using System;
 namespace GLabs.Logging
 {
     /// <summary>
-    /// A wrapper class that mimics the NLog Logger API but uses a Microsoft.Extensions.Logging.ILogger internally.
+    /// A wrapper class that mimics a classic static Logger API but uses a 
+    /// Microsoft.Extensions.Logging.ILogger internally.
     /// This provides backward compatibility for existing code.
     /// </summary>
     public class Logger
@@ -39,76 +40,40 @@ namespace GLabs.Logging
             _melLogger = melLogger ?? throw new ArgumentNullException(nameof(melLogger));
         }
 
-        public void Debug(string message, params object[] args)
-        {
-            _melLogger.LogDebug(message, args);
-        }
+        // --- Methods for logging string messages ---
 
-        public void Info(string message, params object[] args)
-        {
-            _melLogger.LogInformation(message, args);
-        }
+        public void Debug(string message, params object[] args) => _melLogger.LogDebug(message, args);
+        public void Info(string message, params object[] args) => _melLogger.LogInformation(message, args);
+        public void Warn(string message, params object[] args) => _melLogger.LogWarning(message, args);
+        public void Error(string message, params object[] args) => _melLogger.LogError(message, args);
+        public void Trace(string message, params object[] args) => _melLogger.LogTrace(message, args);
 
-        public void Warn(string message, params object[] args)
-        {
-            _melLogger.LogWarning(message, args);
-        }
+        // --- Methods for logging objects ---
 
-        public void Error(string message, params object[] args)
-        {
-            _melLogger.LogError(message, args);
-        }
-
-        public void Error(Exception exception, string message = null, params object[] args)
-        {
-            if (string.IsNullOrEmpty(message))
-            {
-                message = exception.Message;
-            }
-            _melLogger.LogError(exception, message, args);
-        }
-
-        public void Error(Exception exception)
-        {
-            _melLogger.LogError(exception, exception.Message);
-        }
-
-        public void Trace(string message, params object[] args)
-        {
-            _melLogger.LogTrace(message, args);
-        }
+        public void Debug(object value) => _melLogger.LogDebug("{ObjectValue}", value);
+        public void Info(object value) => _melLogger.LogInformation("{ObjectValue}", value);
+        public void Warn(object value) => _melLogger.LogWarning("{ObjectValue}", value);
+        public void Trace(object value) => _melLogger.LogTrace("{ObjectValue}", value);
         
-        
-        public void Debug(object value)
-        {
-            _melLogger.LogDebug("{ObjectValue}", value);
-        }
-
-        public void Info(object value)
-        {
-            _melLogger.LogInformation("{ObjectValue}", value);
-        }
-
-        public void Warn(object value)
-        {
-            _melLogger.LogWarning("{ObjectValue}", value);
-        }
-
         public void Error(object value)
         {
-            if (value is Exception ex)
-            {
-                Error(ex);
-            }
-            else
-            {
-                _melLogger.LogError("{ObjectValue}", value);
-            }
+            if (value is Exception ex) this.Error(ex);
+            else _melLogger.LogError("{ObjectValue}", value);
         }
+
+        // --- Methods for logging exceptions (with optional message) ---
+
+        public void Debug(Exception exception, string message, params object[] args) => _melLogger.LogDebug(exception, message, args);
+        public void Info(Exception exception, string message, params object[] args) => _melLogger.LogInformation(exception, message, args);
+        public void Warn(Exception exception, string message, params object[] args) => _melLogger.LogWarning(exception, message, args);
+        public void Trace(Exception exception, string message, params object[] args) => _melLogger.LogTrace(exception, message, args);
         
-        public void Trace(object value)
+        public void Error(Exception exception, string message = null, params object[] args)
         {
-            _melLogger.LogTrace("{ObjectValue}", value);
+            _melLogger.LogError(exception, message ?? exception.Message, args);
         }
+
+        // Overload for just passing an exception to Error()
+        public void Error(Exception exception) => this.Error(exception, null);
     }
 }

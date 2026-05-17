@@ -1,29 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net472;net6.0;net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net472;net8.0;net10.0</TargetFrameworks>
     <PackageId>GLabs.Logging</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>Generoso Martello</Authors>
     <Company>G-Labs</Company>
     <Description>A logging wrapper for MIG libraries based on Microsoft.Extensions.Logging.</Description>
     <RootNamespace>GLabs.Logging</RootNamespace>
-    <Description>Serial Port libray for .Net
-      Features
-      - Easy to use
-      - Event driven
-      - Hot plug
-      - Automatically restabilish connection on error/disconnect</Description>
     <PackageLicense>./LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/genielabs/glabs-logging/</PackageProjectUrl>
     <PackageTags>logging</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.9"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.9"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9"/>
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.9"/>
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.9"/>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.8"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.8"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.8"/>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.8"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.8"/>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
@@ -34,18 +28,11 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1"/>
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.2"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.1"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.1"/>
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.1"/>
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.1"/>
-  </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net472' ">
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0"/>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" /><!-- explicit version to solve vulnerability of version included in 'Microsoft.Extensions.Configuration.Json' -->
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0"/>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0"/>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0"/>
